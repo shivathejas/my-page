@@ -1,24 +1,67 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
 
-function App() {
+function Block(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="block-list">
+      {props.block.data}     
+    </div>
+  );
+}
+
+function BlockForm(props) {
+  const [value, setValue] = useState("");
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (!value) return;
+    props.addBlock(value);
+    setValue("");
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      Enter blok data:-
+      <input
+        type="text"
+        className="input"
+        value={value}
+        onChange={e => setValue(e.target.value)}
+      />
+    </form>
+  );
+}
+
+function App() {
+  const [blocks, setBlocks] = useState([
+    {
+      data: "Learn about React",
+    },
+    {
+      data: "Meet friend for lunch",
+    },
+    {
+      data: "Build really cool todo app",
+    }
+  ]);
+
+  const addBlock = data => {
+    const newblocks = [...blocks, { data }];
+    setBlocks(newblocks);
+  };
+
+  return (
+    <div className="app">
+      <BlockForm addBlock={addBlock} />
+      <div >
+        {blocks.map((block, index) => (
+          <Block
+            key={index}
+            index={index}
+            block={block}
+          />
+        ))}
+      </div>
     </div>
   );
 }

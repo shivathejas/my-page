@@ -1,7 +1,33 @@
-.App {
+.app {
   text-align: center;
+  padding: 40px ;
 }
+.block-list{
+  border: 1px solid;
+  width:100px;
+  padding:5px;
+  margin-bottom: 5px;
+}
+/* .nav{
+  display:flex;
+  align-items: center;
+  background-color: #cccccc;
+  width: 100vp;
+  height: 50px;
+}
+.nav a:hover{
+  background-color: blue;
+  
+}
+.nav a{
+  display: inline;  
+  margin-right: 50px;
 
+}
+.anchorStyle{
+  color: black;
+  text-decoration: none;
+}
 .App-logo {
   height: 40vmin;
 }
@@ -19,4 +45,4 @@
 
 .App-link {
   color: #09d3ac;
-}
+} */
